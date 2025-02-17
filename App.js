@@ -1,8 +1,33 @@
 import { StatusBar } from 'expo-status-bar';
-import { BackHandler, ScrollView, StyleSheet, Text, View, Image } from 'react-native';
+import { useEffect, useState } from 'react';
+import { BackHandler, ScrollView, StyleSheet, Text, View, Image, Button } from 'react-native';
 import ProductCard from './components/productCard';
+import * as Font from 'expo-font';
 
 export default function App() {
+  const [fontsLoaded, setFontsLoaded] = useState(false);
+
+  useEffect(() => {
+      async function loadFonts() {
+          await Font.loadAsync({
+              'Larken-Thin': require('./assets/fonts/larkenThin.otf'),
+              'Larken-Light': require('./assets/fonts/larkenLight.otf'),
+              'Larken-Regular': require('./assets/fonts/larkenRegular.otf'),
+              'Larken-Medium': require('./assets/fonts/larkenMedium.otf'),
+              'Larken-Bold': require('./assets/fonts/larkenBold.otf'),
+              'Larken-ExtraBold': require('./assets/fonts/larkenExtrabold.otf'),
+              'Elza-Text-Medium': require('./assets/fonts/elzaTextMedium.otf')
+          });
+          setFontsLoaded(true);
+      }
+
+      loadFonts();
+  }, []);
+
+  if (!fontsLoaded) {
+      return <Text>Loading Fonts...</Text>;
+  }
+
   return (
     <ScrollView>
       <View style={styles.container}>
@@ -38,13 +63,15 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-    padding: 20
+    padding: 20,
+
   },
   header1: {
     fontSize: 32,
-    fontWeight: 'bold',
     color: 'black',
     textAlign: 'center',
     marginTop: 20,
+    fontFamily: 'Larken-ExtraBold',
+    textTransform: 'uppercase'
   }
 });

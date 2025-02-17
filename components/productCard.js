@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { BackHandler, ScrollView, StyleSheet, Text, View, Image } from 'react-native';
+import { BackHandler, ScrollView, StyleSheet, Text, View, Image, Button } from 'react-native';
 
 const ProductCard = ({imageSource, productName, productPrice}) => {
     return (
@@ -9,9 +9,14 @@ const ProductCard = ({imageSource, productName, productPrice}) => {
                 style={styles.image}
             />
             <View style={styles.cardTextContainer}>
-            <Text style={styles.productName}>{productName}</Text>
-            <Text style={styles.productPrice}>€{productPrice}</Text>
+                <Text style={styles.productName}>{productName}</Text>
+                <Text style={styles.productPrice}>€{productPrice}</Text>
             </View>
+            <Button
+                title="Add to Cart"
+                color="#000"
+                onPress={() => alert('Added to Cart!')}
+            />
         </View>
     );
 };
@@ -39,11 +44,12 @@ const styles = StyleSheet.create({
     },
     productName:{
         fontSize: 24,
-        fontWeight: "bold",
+        fontFamily: 'Larken-Bold',
         color: "black",
     },
     productPrice:{
         fontSize: 18,
+        fontFamily: 'Elza-Text-Medium',
         color: "black"
     }
 });
