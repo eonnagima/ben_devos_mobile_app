@@ -1,7 +1,10 @@
 import { StatusBar } from 'expo-status-bar';
-import { BackHandler, ScrollView, StyleSheet, Text, View, Image, Button } from 'react-native';
+import { BackHandler, ScrollView, StyleSheet, Text, View, Image, Button, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 const ProductCard = ({imageSource, productName, productPrice}) => {
+    const navigation = useNavigation();
+
     return (
         <View style={styles.productCard}>
             <Image
@@ -13,9 +16,9 @@ const ProductCard = ({imageSource, productName, productPrice}) => {
                 <Text style={styles.productPrice}>€{productPrice}</Text>
             </View>
             <Button
-                title="Add to Cart"
+                title="Details"
                 color="#000"
-                onPress={() => alert('Added to Cart!')}
+                onPress={() => navigation.navigate('Details')}
             />
         </View>
     );
