@@ -32,9 +32,9 @@ const ProductScreen = ({navigation}) => {
   }
 
 return (
-    <ScrollView>
+    <ScrollView style={styles.background}>
         <View style={styles.container}>
-        <Text style={styles.header1}>All Boots</Text>
+        <Text style={styles.header1}>Home</Text>
         </View>
         <ProductCard 
         imageSource={require('../images/shoes/blaze-158-bvl_960x960_crop_center.webp')}
@@ -56,6 +56,9 @@ return (
 }
 
 const styles = StyleSheet.create({
+    background:{
+        backgroundColor: '#fff'
+    },
     container: {
       flex: 1,
       backgroundColor: '#fff',

@@ -32,18 +32,33 @@ const ProductScreen = ({navigation}) => {
   }
 
 return (
-    <ScrollView>
+    <ScrollView style={styles.background}>
         <View style={styles.container}>
             <Text style={styles.header1}>Product</Text>
         </View>
-        <View>
-            <Text>Some Details</Text>
+        <View style={styles.container}>
+            <Image
+                source={require('../images/shoes/blaze-158-bvl_960x960_crop_center.webp')}
+                style={styles.image}
+            />
+            <Text style={styles.header1}>Blaze 158</Text>
+            <Text style={styles.productPrice}>€{170.00}</Text>
+        </View>
+        <View style={styles.container}>
+            <Button
+                title="Add to cart"
+                color="#000"
+                onPress = {() => alert('Added to cart')}
+            />
         </View>
     </ScrollView>
     );
 }
 
 const styles = StyleSheet.create({
+    background:{
+        backgroundColor: '#fff'
+    },
     container: {
       flex: 1,
       backgroundColor: '#fff',
@@ -59,6 +74,19 @@ const styles = StyleSheet.create({
       marginTop: 20,
       fontFamily: 'Larken-ExtraBold',
       textTransform: 'uppercase'
+    },
+    image: {
+        width: "100%",
+        height: 200,
+        borderRadius: 4,
+        margin: 24,
+        alignSelf: "center",
+        objectFit: "contain"
+    },
+    productPrice:{
+        fontSize: 18,
+        fontFamily: 'Elza-Text-Medium',
+        color: "black"
     }
 });
 
