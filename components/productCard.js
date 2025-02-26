@@ -18,7 +18,13 @@ const ProductCard = ({imageSource, productName, productPrice}) => {
             <Button
                 title="Details"
                 color="#000"
-                onPress={() => navigation.navigate('Details')}
+                onPress={() => 
+                    navigation.navigate('Details',{
+                        imageSource: imageSource,
+                        productName: productName,
+                        productPrice: productPrice,
+                    })
+                }
             />
         </View>
     );
