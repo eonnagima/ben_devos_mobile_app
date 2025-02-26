@@ -30,6 +30,8 @@ const ProductCard = ({imageSource, productName, productPrice}) => {
     );
 };
 
+//prop vs parameters
+
 const styles = StyleSheet.create({
     productCard: {
         marginHorizontal: 40,

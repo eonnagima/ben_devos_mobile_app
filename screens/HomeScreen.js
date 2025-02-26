@@ -7,6 +7,10 @@ import {createStackNavigator} from '@react-navigation/stack';
 import ProductCard from '../components/productCard';
 import * as Font from 'expo-font';
 
+import Blaze158Img from '../images/shoes/blaze-158-bvl_960x960_crop_center.webp';
+import Shaker70Img from '../images/shoes/shaker-70-bvl_960x960_crop_center.webp';
+import Camel311Img from '../images/shoes/camel-311-bsue_d514108e-f2ef-4e4b-8daa-44ac2fd9b95e_960x960_crop_center.webp';
+
 const ProductScreen = ({navigation}) => {
   const [fontsLoaded, setFontsLoaded] = useState(false);
 
@@ -37,19 +41,19 @@ return (
         <Text style={styles.header1}>Home</Text>
         </View>
         <ProductCard 
-        imageSource={require('../images/shoes/blaze-158-bvl_960x960_crop_center.webp')}
-        productName="Blaze 158"
-        productPrice="170.00"
+            imageSource={Blaze158Img}
+            productName="Blaze 158"
+            productPrice="170.00"
         />
         <ProductCard 
-        imageSource={require('../images/shoes/shaker-70-bvl_960x960_crop_center.webp')}
-        productName="Shaker 70"
-        productPrice="155.00"
+            imageSource={Shaker70Img}
+            productName="Shaker 70"
+            productPrice="155.00"
         />
         <ProductCard 
-        imageSource={require('../images/shoes/camel-311-bsue_d514108e-f2ef-4e4b-8daa-44ac2fd9b95e_960x960_crop_center.webp')}
-        productName="Camel 311"
-        productPrice="160.00"
+            imageSource={Camel311Img}
+            productName="Camel 311"
+            productPrice="160.00"
         />
     </ScrollView>
     );

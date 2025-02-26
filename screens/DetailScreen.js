@@ -7,29 +7,38 @@ import {createStackNavigator} from '@react-navigation/stack';
 import ProductCard from '../components/productCard';
 import * as Font from 'expo-font';
 
-const ProductScreen = ({navigation}) => {
-  const [fontsLoaded, setFontsLoaded] = useState(false);
+const DetailScreen = ({route}) => {
+    const { imageSource, productName, productPrice } = route.params;
+    const [fontsLoaded, setFontsLoaded] = useState(false);
+    const [quantity, setQuantity] = useState(1);
 
-  useEffect(() => {
-      async function loadFonts() {
-          await Font.loadAsync({
-              'Larken-Thin': require('../assets/fonts/larkenThin.otf'),
-              'Larken-Light': require('../assets/fonts/larkenLight.otf'),
-              'Larken-Regular': require('../assets/fonts/larkenRegular.otf'),
-              'Larken-Medium': require('../assets/fonts/larkenMedium.otf'),
-              'Larken-Bold': require('../assets/fonts/larkenBold.otf'),
-              'Larken-ExtraBold': require('../assets/fonts/larkenExtrabold.otf'),
-              'Elza-Text-Medium': require('../assets/fonts/elzaTextMedium.otf')
-          });
-          setFontsLoaded(true);
-      }
+    const increaseQuantity = () => { setQuantity(quantity + 1); }
+    const decreaseQuantity = () => { 
+        if (quantity > 1) {
+            setQuantity(quantity - 1); 
+        }
+    };
+        
+    useEffect(() => {
+        async function loadFonts() {
+            await Font.loadAsync({
+                'Larken-Thin': require('../assets/fonts/larkenThin.otf'),
+                'Larken-Light': require('../assets/fonts/larkenLight.otf'),
+                'Larken-Regular': require('../assets/fonts/larkenRegular.otf'),
+                'Larken-Medium': require('../assets/fonts/larkenMedium.otf'),
+                'Larken-Bold': require('../assets/fonts/larkenBold.otf'),
+                'Larken-ExtraBold': require('../assets/fonts/larkenExtrabold.otf'),
+                'Elza-Text-Medium': require('../assets/fonts/elzaTextMedium.otf')
+            });
+            setFontsLoaded(true);
+        }
 
-      loadFonts();
-  }, []);
+        loadFonts();
+    }, []);
 
-  if (!fontsLoaded) {
-      return <Text>Loading Fonts...</Text>;
-  }
+    if (!fontsLoaded) {
+        return <Text>Loading Fonts...</Text>;
+    }
 
 return (
     <ScrollView style={styles.background}>
@@ -38,11 +47,11 @@ return (
         </View>
         <View style={styles.container}>
             <Image
-                source={require('../images/shoes/blaze-158-bvl_960x960_crop_center.webp')}
+                source={imageSource}
                 style={styles.image}
             />
-            <Text style={styles.header1}>Blaze 158</Text>
-            <Text style={styles.productPrice}>€{170.00}</Text>
+            <Text style={styles.header1}>{productName}</Text>
+            <Text style={styles.productPrice}>€{productPrice}</Text>
         </View>
         <View style={styles.container}>
             <Button
@@ -90,4 +99,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default ProductScreen;
+export default DetailScreen;
