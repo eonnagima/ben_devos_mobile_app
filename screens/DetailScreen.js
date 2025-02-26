@@ -1,7 +1,7 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';
-import { BackHandler, ScrollView, StyleSheet, Text, View, Image, Button, TouchableOpacity } from 'react-native';
+import { BackHandler, ScrollView, StyleSheet, Text, View, Image, Button, TouchableOpacity, Touchable } from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack'; 
 import ProductCard from '../components/productCard';
@@ -9,7 +9,7 @@ import * as Font from 'expo-font';
 
 const DetailScreen = ({route}) => {
     const { imageSource, productName, productPrice } = route.params;
-    const [fontsLoaded, setFontsLoaded] = useState(false);
+    const [fontsLoaded, setFontsLoaded] = useState(false); //een usestate laat ons toe om de waarde van een variabele te veranderen zonder de pagina te herladen
     const [quantity, setQuantity] = useState(1);
 
     const increaseQuantity = () => { setQuantity(quantity + 1); }
@@ -51,7 +51,16 @@ return (
                 style={styles.image}
             />
             <Text style={styles.header1}>{productName}</Text>
-            <Text style={styles.productPrice}>€{productPrice}</Text>
+            <Text style={styles.productPrice}>€{productPrice*quantity}</Text>
+        </View>
+        <View style={styles.quantity}>
+            <TouchableOpacity onPress={decreaseQuantity}>
+                <Text style={styles.productPrice}>-</Text>
+            </TouchableOpacity>
+            <Text style={styles.productPrice}>{quantity}</Text>
+            <TouchableOpacity onPress={increaseQuantity}>
+                <Text style={styles.productPrice}>+</Text>
+            </TouchableOpacity>
         </View>
         <View style={styles.container}>
             <Button
@@ -75,6 +84,14 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
       paddingVertical: 40,
       paddingHorizontal: 20
+    },
+    quantity: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        gap: 20,
+        marginVertical: 20,
+
     },
     header1: {
       fontSize: 32,
