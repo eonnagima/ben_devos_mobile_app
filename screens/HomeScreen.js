@@ -1,81 +1,36 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';
-import { BackHandler, ScrollView, StyleSheet, Text, View, Image, Button, TouchableOpacity} from 'react-native';
+import { BackHandler, ScrollView, StyleSheet, Text, View, Image, Button, TouchableOpacity, ImageBackground} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack'; 
 import ProductCard from '../components/productCard';
 import * as Font from 'expo-font';
 import{ DEMONIA_WEBFLOW_API_KEY} from '@env';
 
+import LinkCard from '../components/linkCard';
+
+import shoes from '../assets/images/shoes.jpg';
+
 const HomeScreen = ({navigation}) => {
-  const [fontsLoaded, setFontsLoaded] = useState(false);
-  const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    // Load custom fonts
-    async function loadFonts() {
-        await Font.loadAsync({
-            'Larken-Thin': require('../assets/fonts/larkenThin.otf'),
-            'Larken-Light': require('../assets/fonts/larkenLight.otf'),
-            'Larken-Regular': require('../assets/fonts/larkenRegular.otf'),
-            'Larken-Medium': require('../assets/fonts/larkenMedium.otf'),
-            'Larken-Bold': require('../assets/fonts/larkenBold.otf'),
-            'Larken-ExtraBold': require('../assets/fonts/larkenExtrabold.otf'),
-            'Elza-Text-Medium': require('../assets/fonts/elzaTextMedium.otf')
-        });
-        setFontsLoaded(true);
-    }
-    loadFonts();
-
-    fetch(
-        'https://api.webflow.com/v2/sites/67ab9628a0b2d39659eb5d0f/products',
-        {
-            headers:{
-                Authorization:
-                    `Bearer ${DEMONIA_WEBFLOW_API_KEY}`,
-            },
-        }
-    )
-        .then((res) => res.json()) //res = response
-        .then((data) => {
-            setProducts(
-                data.items.map((item) => ({
-                    id: item.product.id,
-                    name: item.product.fieldData.name,
-                    description: item.product.fieldData.description,
-                    price: (item.skus[0]?.fieldData.price.value || 0) / 100, //convert cents to euros
-                    mainImage: {uri: item.skus[0]?.fieldData["main-image"]?.url },
-                    otherImages: (item.skus[0]?.fieldData["more-images"] || []).map(img => ({ uri: img.url })),
-                }))
-            )
-        })
-        .catch((error) => console.error('Error fetching products:', error));
-  }, []);
-
-  if (!fontsLoaded) {
-      return <Text>Loading Fonts...</Text>;
-  }
 
 return (
     <ScrollView style={styles.background}>
         <View style={styles.container}>
-        <Text style={styles.header1}>Shoes</Text>
+
+            <Text style={styles.header1}>Demonia Cult</Text>
+            <Text style={styles.slogan}>Defining Alternative Footwear</Text>
         </View>
-        <View>
-            {products.map((product) => (
-                <ProductCard
-                    key={product.id}
-                    name={product.name}
-                    price={product.price}
-                    mainImage={product.mainImage}
-                    onPress={() => navigation.navigate('ProductDetails', product)}
-                />
-            ))}
+        <View style={styles.container}>
+            <LinkCard
+                image={shoes}
+                title="Discover our collection"
+                onPress={() => navigation.navigate('Products')}
+            />
         </View>
     </ScrollView>
-    );
-}
+);
+};
 
 const styles = StyleSheet.create({
     background:{
@@ -96,6 +51,13 @@ const styles = StyleSheet.create({
       marginTop: 20,
       fontFamily: 'Larken-ExtraBold',
       textTransform: 'uppercase'
+    },
+    slogan:{
+        fontSize: 18,
+        color: 'black',
+        textAlign: 'center',
+        marginTop: 10,
+        fontFamily: 'Elza-Text-Medium',
     }
 });
 

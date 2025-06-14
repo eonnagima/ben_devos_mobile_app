@@ -1,23 +1,62 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';
+import {useFonts} from 'expo-font';
 import { BackHandler, ScrollView, StyleSheet, Text, View, Image, Button } from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack'; 
 import * as Font from 'expo-font';
 
 import HomeScreen from './screens/HomeScreen';
-import DetailScreen from './screens/DetailScreen';
+import ProductsScreen from './screens/ProductsScreen';
+import ProductDetailScreen from './screens/ProductDetailScreen';
+import BlogsScreen from './screens/BlogsScreen';
+import BlogPostScreen from './screens/BlogPostScreen';
+import CartScreen from './screens/CartScreen';
+
 
 const Stack = createStackNavigator();
 
 export default function App() {
+  //import and load custom fonts
+  const [fontsLoaded] = useFonts({
+    'Larken-Thin': require('./assets/fonts/larkenThin.otf'),
+    'Larken-Light': require('./assets/fonts/larkenLight.otf'),
+    'Larken-Regular': require('./assets/fonts/larkenRegular.otf'),
+    'Larken-Medium': require('./assets/fonts/larkenMedium.otf'),
+    'Larken-Bold': require('./assets/fonts/larkenBold.otf'),
+    'Larken-ExtraBold': require('./assets/fonts/larkenExtrabold.otf'),
+    'Elza-Text-Medium': require('./assets/fonts/elzaTextMedium.otf'),
+  });
+
+  if (!fontsLoaded) {
+    return <Text>Loading Fonts...</Text>;
+  }
 
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator
+        screenOptions={{
+          headerStyle: {
+            backgroundColor: '#111',
+          },
+          headerTintColor: '#fff',
+          headerTitleStyle: {
+            fontFamily: 'Larken-Bold',
+            fontSize: 24,
+          },
+        }}
+        >
         <Stack.Screen name="Home" component={HomeScreen}/>
-        <Stack.Screen name="ProductDetails" component={DetailScreen}/>
+
+        <Stack.Screen name="Products" component={ProductsScreen}/>
+        <Stack.Screen name="ProductDetails" component={ProductDetailScreen}/>
+
+        {/* <Stack.Screen name="Blogs" component={BlogsScreen}/>
+        <Stack.Screen name="BlogPost" component={BlogPostScreen}/>
+
+        <Stack.Screen name="Cart" component={CartScreen}/> */}
+        
       </Stack.Navigator>
     </NavigationContainer>
   );
