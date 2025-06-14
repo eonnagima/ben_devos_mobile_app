@@ -10,7 +10,8 @@ import{ DEMONIA_WEBFLOW_API_KEY} from '@env';
 
 import LinkCard from '../components/linkCard';
 
-import shoes from '../assets/images/shoes.jpg';
+import shoesImg from '../assets/images/shoes.jpg';
+import blogsImg from '../assets/images/blogs.jpg';
 
 const HomeScreen = ({navigation}) => {
 
@@ -23,9 +24,16 @@ return (
         </View>
         <View style={styles.container}>
             <LinkCard
-                image={shoes}
+                image={shoesImg}
                 title="Discover our collection"
                 onPress={() => navigation.navigate('Products')}
+            />
+        </View>
+        <View style={styles.container}>
+            <LinkCard
+                image={blogsImg}
+                title="Read our latest news"
+                onPress={() => navigation.navigate('Blogs')}
             />
         </View>
     </ScrollView>

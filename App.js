@@ -52,10 +52,10 @@ export default function App() {
         <Stack.Screen name="Products" component={ProductsScreen}/>
         <Stack.Screen name="ProductDetails" component={ProductDetailScreen}/>
 
-        {/* <Stack.Screen name="Blogs" component={BlogsScreen}/>
+        <Stack.Screen name="Blogs" component={BlogsScreen}/>
         <Stack.Screen name="BlogPost" component={BlogPostScreen}/>
 
-        <Stack.Screen name="Cart" component={CartScreen}/> */}
+        {/* <Stack.Screen name="Cart" component={CartScreen}/> */}
         
       </Stack.Navigator>
     </NavigationContainer>

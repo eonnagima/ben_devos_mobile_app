@@ -40,7 +40,7 @@ const ProductsScreen = ({navigation}) => {
     return (
         <ScrollView style={styles.background}>
             <View style={styles.container}>
-            <Text style={styles.header1}>Shoes</Text>
+            <Text style={styles.header1}>All Shoes</Text>
             </View>
             <View>
                 {products.map((product) => (

@@ -7,9 +7,8 @@ import {createStackNavigator} from '@react-navigation/stack';
 import ProductCard from '../components/productCard';
 import * as Font from 'expo-font';
 
-const DetailScreen = ({route}) => {
+const ProductDetailScreen = ({route}) => {
     const product = route.params;
-    const [fontsLoaded, setFontsLoaded] = useState(false); //een usestate laat ons toe om de waarde van een variabele te veranderen zonder de pagina te herladen
     const [quantity, setQuantity] = useState(1);
 
     const increaseQuantity = () => { setQuantity(quantity + 1); }
@@ -108,4 +107,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default DetailScreen;
+export default ProductDetailScreen;
