@@ -4,18 +4,40 @@ import { useEffect, useState } from 'react';
 import { BackHandler, ScrollView, StyleSheet, Text, View, Image, Button, TouchableOpacity, Touchable } from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack'; 
-import ProductCard from '../components/productCard';
 import * as Font from 'expo-font';
+import Toast from 'react-native-toast-message';
+
+import {useCartStore} from '../store/useCart.js';
+import ProductCard from '../components/productCard';
 
 const ProductDetailScreen = ({route}) => {
     const product = route.params;
     const [quantity, setQuantity] = useState(1);
+
+    const addToCart = useCartStore(state => state.addToCart);
 
     const increaseQuantity = () => { setQuantity(quantity + 1); }
     const decreaseQuantity = () => { 
         if (quantity > 1) {
             setQuantity(quantity - 1); 
         }
+    }
+
+    const handleAddToCart = () => {
+        addToCart({
+            id: product.id,
+            name: product.name,
+            mainImage: product.mainImage,
+            price: product.price,
+            amount: quantity,  // use the current quantity
+        });
+
+        Toast.show({
+            type: 'success',
+            text1: `${product.name} added to cart`,
+            position: 'bottom',
+            visibilityTime: 3000, //3s
+        });
     }
 
 return (
@@ -41,7 +63,7 @@ return (
             <Button
                 title="Add to cart"
                 color="#000"
-                onPress = {() => alert('Added to cart')}
+                onPress = {handleAddToCart}
             />
         </View>
         <View style={styles.container}>

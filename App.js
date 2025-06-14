@@ -18,6 +18,8 @@ import CartScreen from './screens/CartScreen';
 import LooksScreen from './screens/LooksScreen';
 import LookImageScreen from './screens/LookImageScreen';
 
+import CartButton from './components/cartButton';
+
 
 const Stack = createStackNavigator();
 
@@ -50,6 +52,7 @@ export default function App() {
               fontFamily: 'Larken-Bold',
               fontSize: 24,
             },
+            headerRight: () => <CartButton/>
           }}
           >
           <Stack.Screen name="Home" component={HomeScreen}/>
@@ -63,7 +66,7 @@ export default function App() {
           <Stack.Screen name="Looks" component={LooksScreen}/>
           <Stack.Screen name="LookImage" component={LookImageScreen}/>
           
-          {/* <Stack.Screen name="Cart" component={CartScreen}/> */}
+          <Stack.Screen name="Cart" component={CartScreen}/>
           
         </Stack.Navigator>
       </NavigationContainer>
