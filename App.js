@@ -14,6 +14,7 @@ import BlogsScreen from './screens/BlogsScreen';
 import BlogPostScreen from './screens/BlogPostScreen';
 import CartScreen from './screens/CartScreen';
 import LooksScreen from './screens/LooksScreen';
+import LookImageScreen from './screens/LookImageScreen';
 
 
 const Stack = createStackNavigator();
@@ -57,6 +58,7 @@ export default function App() {
         <Stack.Screen name="BlogPost" component={BlogPostScreen}/>
 
         <Stack.Screen name="Looks" component={LooksScreen}/>
+        <Stack.Screen name="LookImage" component={LookImageScreen}/>
         
         {/* <Stack.Screen name="Cart" component={CartScreen}/> */}
         
