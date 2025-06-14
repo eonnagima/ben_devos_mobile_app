@@ -27,7 +27,7 @@ const LooksScreen = ({navigation}) => {
             .then((data) => {
                 setLooks(
                     data.items.map((item) => ({
-                        id: item.id,
+                        key: item.id,
                         title: item.fieldData.name,
                         date: item.createdOn,
                         image: {uri: item.fieldData['style-image']?.url} 
@@ -46,6 +46,7 @@ const LooksScreen = ({navigation}) => {
                 <View style={styles.column}>
                 {looks.filter((_, index) => index % 2 === 0).map((look) => (
                     <LookCard
+                        key={look.key}
                         title={look.title}
                         image={look.image}
                         onPress={() => navigation.navigate('Look Image', look)}
@@ -55,9 +56,10 @@ const LooksScreen = ({navigation}) => {
                 <View style={styles.column}>
                 {looks.filter((_, index) => index % 2 !== 0).map((look) => (
                     <LookCard
+                        key={look.key}
                         title={look.title}
                         image={look.image}
-                        onPress={() => navigation.navigate('LookImage', look)}
+                        onPress={() => navigation.navigate('Look Image', look)}
                     />
                 ))}
                 </View>
