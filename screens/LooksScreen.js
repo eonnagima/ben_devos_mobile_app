@@ -46,7 +46,7 @@ const LooksScreen = ({navigation}) => {
                     <LookCard
                         title={look.title}
                         image={look.image}
-                        onPress={() => navigation.navigate('LookImage', look)}
+                        onPress={() => navigation.navigate('Look Image', look)}
                     />
                 ))}
                 </View>

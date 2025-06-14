@@ -14,9 +14,10 @@ import ProductsScreen from './screens/ProductsScreen';
 import ProductDetailScreen from './screens/ProductDetailScreen';
 import BlogsScreen from './screens/BlogsScreen';
 import BlogPostScreen from './screens/BlogPostScreen';
-import CartScreen from './screens/CartScreen';
 import LooksScreen from './screens/LooksScreen';
 import LookImageScreen from './screens/LookImageScreen';
+import CartScreen from './screens/CartScreen';
+import OrderConfirmScreen from './screens/OrderConfirmScreen';
 
 import CartButton from './components/cartButton';
 
@@ -64,9 +65,10 @@ export default function App() {
           <Stack.Screen name="BlogPost" component={BlogPostScreen}/>
 
           <Stack.Screen name="Looks" component={LooksScreen}/>
-          <Stack.Screen name="LookImage" component={LookImageScreen}/>
+          <Stack.Screen name="Look Image" component={LookImageScreen}/>
           
           <Stack.Screen name="Cart" component={CartScreen}/>
+          <Stack.Screen name="Order Confirmed" component={OrderConfirmScreen}/>
           
         </Stack.Navigator>
       </NavigationContainer>
