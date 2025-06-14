@@ -1,4 +1,4 @@
-import create from 'zustand'; //library that lets you store persistent state data in React Native
+import { create } from 'zustand';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { persist } from 'zustand/middleware';
 
@@ -8,17 +8,25 @@ export const useCartStore = create(
       cartItems: [],
 
       addToCart: (item) => {
+        if (!item || !item.id) {
+          console.error('Invalid item passed to addToCart:', item);
+          return;
+        }
+
         set((state) => {
           const existingItem = state.cartItems.find(i => i.id === item.id);
 
           if (existingItem) {
-            return {
-              cartItems: state.cartItems.map(i =>
-                i.id === item.id ? { ...i, amount: i.amount + (item.amount || 1) } : i
-              ),
-            };
+            // Increment amount
+            const updatedCart = state.cartItems.map(i =>
+              i.id === item.id
+                ? { ...i, amount: (i.amount || 1) + (item.amount || 1) }
+                : i
+            );
+            return { cartItems: updatedCart };
           }
 
+          // Add new item with amount default to 1
           return {
             cartItems: [...state.cartItems, { ...item, amount: item.amount || 1 }],
           };
@@ -36,9 +44,8 @@ export const useCartStore = create(
       },
     }),
     {
-      name: 'userCart', 
+      name: 'userCart',
       getStorage: () => AsyncStorage,
     }
   )
 );
-a

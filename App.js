@@ -6,6 +6,7 @@ import { BackHandler, ScrollView, StyleSheet, Text, View, Image, Button } from '
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack'; 
 import * as Font from 'expo-font';
+import Toast from 'react-native-toast-message';
 
 import HomeScreen from './screens/HomeScreen';
 import ProductsScreen from './screens/ProductsScreen';
@@ -36,34 +37,37 @@ export default function App() {
   }
 
   return (
-    <NavigationContainer>
-      <Stack.Navigator
-        screenOptions={{
-          headerStyle: {
-            backgroundColor: '#111',
-          },
-          headerTintColor: '#fff',
-          headerTitleStyle: {
-            fontFamily: 'Larken-Bold',
-            fontSize: 24,
-          },
-        }}
-        >
-        <Stack.Screen name="Home" component={HomeScreen}/>
+    <>
+      <NavigationContainer>
+        <Stack.Navigator
+          screenOptions={{
+            headerStyle: {
+              backgroundColor: '#111',
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontFamily: 'Larken-Bold',
+              fontSize: 24,
+            },
+          }}
+          >
+          <Stack.Screen name="Home" component={HomeScreen}/>
 
-        <Stack.Screen name="Products" component={ProductsScreen}/>
-        <Stack.Screen name="ProductDetails" component={ProductDetailScreen}/>
+          <Stack.Screen name="Products" component={ProductsScreen}/>
+          <Stack.Screen name="ProductDetails" component={ProductDetailScreen}/>
 
-        <Stack.Screen name="Blogs" component={BlogsScreen}/>
-        <Stack.Screen name="BlogPost" component={BlogPostScreen}/>
+          <Stack.Screen name="Blogs" component={BlogsScreen}/>
+          <Stack.Screen name="BlogPost" component={BlogPostScreen}/>
 
-        <Stack.Screen name="Looks" component={LooksScreen}/>
-        <Stack.Screen name="LookImage" component={LookImageScreen}/>
-        
-        {/* <Stack.Screen name="Cart" component={CartScreen}/> */}
-        
-      </Stack.Navigator>
-    </NavigationContainer>
+          <Stack.Screen name="Looks" component={LooksScreen}/>
+          <Stack.Screen name="LookImage" component={LookImageScreen}/>
+          
+          {/* <Stack.Screen name="Cart" component={CartScreen}/> */}
+          
+        </Stack.Navigator>
+      </NavigationContainer>
+      <Toast/>  
+    </>
   );
 }
 
@@ -90,3 +94,5 @@ Array Methodes:
 - map() = loopen over data
 - sort() = Items rangschikken in een array
 */
+
+// <> </> =>  React Fragment = lets me group these elements as return expects only one element. Cleaner than using a View

@@ -4,9 +4,10 @@ import { useEffect, useState } from 'react';
 import { BackHandler, ScrollView, StyleSheet, Text, View, Image, Button, TouchableOpacity} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack'; 
-import ProductCard from '../components/productCard';
 import * as Font from 'expo-font';
 import{ DEMONIA_WEBFLOW_API_KEY} from '@env';
+
+import ProductCard from '../components/productCard';
 
 const ProductsScreen = ({navigation}) => {
     const [products, setProducts] = useState([]);
@@ -46,9 +47,10 @@ const ProductsScreen = ({navigation}) => {
                 {products.map((product) => (
                     <ProductCard
                         key={product.id}
+                        id={product.id}
                         name={product.name}
-                        price={product.price}
                         mainImage={product.mainImage}
+                        price={product.price}
                         onPress={() => navigation.navigate('ProductDetails', product)}
                     />
                 ))}
