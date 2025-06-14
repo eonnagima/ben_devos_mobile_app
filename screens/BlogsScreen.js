@@ -7,7 +7,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import BlogCard from '../components/blogCard';
 import * as Font from 'expo-font';
 import {format} from 'date-fns';
-import{ DEMONIA_WEBFLOW_API_KEY} from '@env';
+import{DEMONIA_WEBFLOW_API_KEY} from '@env';
 
 const BlogsScreen = ({navigation}) => {
     const [blogs, setBlogs] = useState([]);
@@ -60,7 +60,7 @@ const BlogsScreen = ({navigation}) => {
             </View>
         </ScrollView>
     );
-}
+};
 
 const styles = StyleSheet.create({
     background:{
