@@ -37,7 +37,7 @@ const ProductCard = ({ id, mainImage, name, price, onPress }) => {
         </View>
       </TouchableOpacity>
       <CustomButton
-        text="Add to Cart"
+        title="Add to Cart"
         onPress={handleAddToCart}
       />
     </View>

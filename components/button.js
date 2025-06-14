@@ -1,35 +1,32 @@
 import React from 'react';
 import { Pressable, Text, StyleSheet } from 'react-native';
 
-const CustomButton = ({ text, onPress, style }) => {
+const CustomButton = ({ title, onPress, mainColor = "#272727", activeColor = "#3FC427", textColor = '#fff', fullWidth = false }) => {
   return (
     <Pressable
       onPress={onPress}
       style={({ pressed }) => [
         styles.button,
-        pressed && styles.pressed,
-        style
+        { backgroundColor: pressed ? activeColor : mainColor },
+        fullWidth && { width: '100%' }
       ]}
     >
-      <Text style={styles.text}>{text}</Text>
+      <Text style={[styles.text, { color: textColor }]}>{title}</Text>
     </Pressable>
   );
 };
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: '#272727',
-    paddingVertical: 12,
-    paddingHorizontal: 24,
+    paddingVertical: 14,
+    paddingHorizontal: 20,
     borderRadius: 6,
     alignItems: 'center',
-  },
-  pressed: {
-    backgroundColor: "#3FC427",
+    marginTop: 10,
   },
   text: {
-    color: '#fff',
-    fontWeight: 'bold',
+    fontSize: 16,
+    fontFamily: 'Elza-Text-Medium',
   },
 });
 

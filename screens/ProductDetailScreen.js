@@ -62,7 +62,7 @@ return (
         </View>
         <View style={styles.container}>
             <CustomButton
-                text="Add to Cart"
+                title="Add to Cart"
                 onPress={handleAddToCart}
             />
         </View>
