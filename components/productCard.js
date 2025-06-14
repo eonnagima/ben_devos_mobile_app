@@ -2,31 +2,21 @@ import { StatusBar } from 'expo-status-bar';
 import { BackHandler, ScrollView, StyleSheet, Text, View, Image, Button, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-const ProductCard = ({imageSource, productName, productPrice}) => {
-    const navigation = useNavigation();
-    
-    const goToDetails = () => {
-        navigation.navigate('Details',{
-            imageSource: imageSource,
-            productName: productName,
-            productPrice: productPrice,
-        })
-    };
-
+const ProductCard = ({ mainImage, name, price, onPress }) => {
     const addToCart = () => {
         alert('Added to cart');
     };
 
     return (
         <View style={styles.productCard}>
-            <TouchableOpacity onPress={goToDetails}>
-                <Image
-                    source={imageSource}
+            <TouchableOpacity onPress={onPress}>
+                <Image 
+                    source={mainImage}
                     style={styles.image}
                 />
                 <View style={styles.cardTextContainer}>
-                    <Text style={styles.productName}>{productName}</Text>
-                    <Text style={styles.productPrice}>€{productPrice}</Text>
+                    <Text style={styles.productName}>{name}</Text>
+                    <Text style={styles.productPrice}>€{price}</Text>
                 </View>
             </TouchableOpacity>
             <Button
