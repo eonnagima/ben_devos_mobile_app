@@ -1,3 +1,5 @@
+// Detailed overview of products
+
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';
@@ -71,7 +73,7 @@ return (
                 {product.description}
             </Text>
         </View>
-    {product.otherImages && product.otherImages.length > 0 && (
+    {product.otherImages && product.otherImages.length > 0 && ( //if there are more than just the main image, display them here
     <View style={styles.otherImagesContainer}>
         {product.otherImages.map((img, index) => (
         <Image

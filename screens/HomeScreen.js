@@ -1,3 +1,5 @@
+//Home Screen with navigation links to Products, Blogs, and Looks sections
+
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';
@@ -6,10 +8,10 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack'; 
 import ProductCard from '../components/productCard';
 import * as Font from 'expo-font';
-import{ DEMONIA_WEBFLOW_API_KEY} from '@env';
 
 import LinkCard from '../components/linkCard';
 
+//static images for the home screen
 import logoImg from '../assets/images/logo.png';
 import shoesImg from '../assets/images/shoes.jpg';
 import blogsImg from '../assets/images/blogs.jpg';

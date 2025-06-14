@@ -1,3 +1,5 @@
+// Overview of all available products with clickthough to product details screen and add to cart functionality
+
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';

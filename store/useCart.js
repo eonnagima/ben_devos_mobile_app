@@ -1,79 +1,81 @@
-import { create } from 'zustand';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+// Cart Context file using zustand for state management
+
+import { create } from 'zustand'; // Zustand is a state management library for react
+import AsyncStorage from '@react-native-async-storage/async-storage'; // AsyncStorage is used to persist the cart state across app restarts
 import { persist } from 'zustand/middleware';
 
 export const useCartStore = create(
-  persist(
-    (set) => ({
-      cartItems: [],
+    persist(
+      (set) => ({
+        cartItems: [],
 
-      addToCart: (item) => {
-        if (!item || !item.id) {
-          console.error('Invalid item passed to addToCart:', item);
-          return;
-        }
-
-        set((state) => {
-          const existingItem = state.cartItems.find(i => i.id === item.id);
-
-          if (existingItem) {
-            const updatedCart = state.cartItems.map(i =>
-              i.id === item.id
-                ? { ...i, amount: (i.amount || 1) + (item.amount || 1) }
-                : i
-            );
-            return { cartItems: updatedCart };
+        addToCart: (item) => {
+          if (!item || !item.id) {
+            console.error('Invalid item passed to addToCart:', item);
+            return;
           }
 
-          return {
-            cartItems: [...state.cartItems, { ...item, amount: item.amount || 1 }],
-          };
-        });
-      },
+          set((state) => {
+            const existingItem = state.cartItems.find(i => i.id === item.id);
 
-      removeFromCart: (itemId) => {
-        set((state) => ({
-          cartItems: state.cartItems.filter(i => i.id !== itemId),
-        }));
-      },
+            if (existingItem) {
+              const updatedCart = state.cartItems.map(i =>
+                i.id === item.id
+                  ? { ...i, amount: (i.amount || 1) + (item.amount || 1) }
+                  : i
+              );
+              return { cartItems: updatedCart };
+            }
 
-      clearCart: () => {
-        set({ cartItems: [] });
-      },
+            return {
+              cartItems: [...state.cartItems, { ...item, amount: item.amount || 1 }],
+            };
+          });
+        },
 
-      increaseAmount: (itemId) => {
-        set((state) => {
-          const updatedCart = state.cartItems.map(item =>
-            item.id === itemId
-              ? { ...item, amount: item.amount + 1 }
-              : item
-          );
-          return { cartItems: updatedCart };
-        });
-      },
+        removeFromCart: (itemId) => {
+          set((state) => ({
+            cartItems: state.cartItems.filter(i => i.id !== itemId),
+          }));
+        },
 
-      decreaseAmount: (itemId) => {
-        set((state) => {
-          const updatedCart = state.cartItems
-            .map(item => {
-              if (item.id === itemId) {
-                if (item.amount > 1) {
-                  return { ...item, amount: item.amount - 1 };
+        clearCart: () => {
+          set({ cartItems: [] });
+        },
+
+        increaseAmount: (itemId) => {
+          set((state) => {
+            const updatedCart = state.cartItems.map(item =>
+              item.id === itemId
+                ? { ...item, amount: item.amount + 1 }
+                : item
+            );
+            return { cartItems: updatedCart };
+          });
+        },
+
+        decreaseAmount: (itemId) => {
+          set((state) => {
+            const updatedCart = state.cartItems
+              .map(item => {
+                if (item.id === itemId) {
+                  if (item.amount > 1) {
+                    return { ...item, amount: item.amount - 1 };
+                  }
+                  // else we return null here to signal removal
+                  return null;
                 }
-                // else we return null here to signal removal
-                return null;
-              }
-              return item;
-            })
-            .filter(item => item !== null); // remove items that became null (amount 0)
+                return item;
+              })
+              .filter(item => item !== null); // remove items that became null (amount 0)
 
-          return { cartItems: updatedCart };
-        });
-      },
-    }),
-    {
-      name: 'userCart',
-      getStorage: () => AsyncStorage,
-    }
+            return { cartItems: updatedCart };
+          });
+        },
+      }),
+      {
+        name: 'userCart',
+        getStorage: () => AsyncStorage,
+      }
   )
 );

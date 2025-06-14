@@ -1,3 +1,5 @@
+// way inner pages are displayed on the home screen
+
 import { BackHandler, ScrollView, StyleSheet, Text, View, Image, Button, TouchableOpacity, ImageBackground} from 'react-native';
 
 const LinkCard = ({image, title, onPress}) => {

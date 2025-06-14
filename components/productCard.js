@@ -1,3 +1,5 @@
+//Product Card to be used in the products overview screen
+
 import React from 'react';
 import { StyleSheet, Text, View, Image, Button, TouchableOpacity } from 'react-native';
 import { useCartStore } from '../store/useCart.js';

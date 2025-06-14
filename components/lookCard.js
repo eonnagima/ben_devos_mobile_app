@@ -1,3 +1,5 @@
+// Card for the looks screen which will display models wearing Demonia shoes
+
 import { BackHandler, ScrollView, StyleSheet, Text, View, Image, Button, TouchableOpacity, ImageBackground} from 'react-native';
 
 const LookCard = ({image, title, onPress}) => {

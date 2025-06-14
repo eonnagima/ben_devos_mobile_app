@@ -1,3 +1,5 @@
+//config file for the toast messages used when adding products to the cart. This makes sure it uses the style of the app instead of the default toast style.
+
 import React from 'react';
 import { BaseToast } from 'react-native-toast-message';
 

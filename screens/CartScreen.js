@@ -1,3 +1,5 @@
+//Cart Screen with empty state handling, total price calculation, and cart item management
+
 import React from 'react';
 import { View, Text, FlatList, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { useCartStore } from '../store/useCart';

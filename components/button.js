@@ -1,3 +1,5 @@
+//custom button with default styles. Mainly adds an active state for user feedback
+
 import React from 'react';
 import { Pressable, Text, StyleSheet } from 'react-native';
 

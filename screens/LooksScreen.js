@@ -1,3 +1,5 @@
+//Screen in which users can browse how models have styled their Demonia shoes with images from the Webflow CMS
+
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';
@@ -6,14 +8,14 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack'; 
 import * as Font from 'expo-font';
 import LookCard from '../components/lookCard';
-import{DEMONIA_WEBFLOW_API_KEY} from '@env';
+import{DEMONIA_WEBFLOW_API_KEY} from '@env'; //making use of .env file to store API key to not hardcode or expose it in the codebase
 
 const LooksScreen = ({navigation}) => {
     const [looks, setLooks] = useState([]);
 
     useEffect(() => {
         fetch(
-            'https://api.webflow.com/v2/sites/67ab9628a0b2d39659eb5d0f/collections/684d624f3fdebb082dfc28d5/items',
+            'https://api.webflow.com/v2/sites/67ab9628a0b2d39659eb5d0f/collections/684d624f3fdebb082dfc28d5/items', //styles collection
             {
                 headers:{
                     Authorization:

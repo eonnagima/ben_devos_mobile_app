@@ -1,3 +1,5 @@
+//Detail Screen for a single blog post
+
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';
@@ -23,7 +25,7 @@ return (
             <Text style={styles.header1}>{blog.title}</Text>
         </View>
         <View style={styles.container}>
-            <RenderHTML
+            <RenderHTML //using RenderHTML as the Webflow API returns HTML content and we don't want to display that to the user
                 contentWidth={width}
                 source={{ html: blog.intro }}
                 baseStyle={{

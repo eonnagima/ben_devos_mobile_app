@@ -1,3 +1,5 @@
+//Order Confirmation screen to finish up the order product flow. Skips payment and shipping details for simplicity.
+
 import React from 'react';
 import { View, Text, FlatList, StyleSheet, Image } from 'react-native';
 import {NavigationContainer, useNavigation, useFocusEffect } from '@react-navigation/native';

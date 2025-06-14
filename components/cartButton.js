@@ -1,3 +1,5 @@
+//cart button to navigate to cart screen
+
 import { BackHandler, ScrollView, StyleSheet, Text, View, Image, Button, TouchableOpacity, ImageBackground} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Foundation from '@expo/vector-icons/Foundation';

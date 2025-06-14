@@ -1,3 +1,5 @@
+//Card to display blog posts in the blog screen
+
 import { StatusBar } from 'expo-status-bar';
 import { BackHandler, ScrollView, StyleSheet, Text, View, Image, Button, TouchableOpacity, ImageBackground } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
@@ -22,8 +24,6 @@ const BlogCard = ({thumbnail, title, date, onPress }) => {
         </View>
     );
 };
-
-//prop(erty) vs parameters
 
 const styles = StyleSheet.create({
     productCard: {

@@ -1,4 +1,4 @@
-// LookDetailScreen.js
+// Very simple fullscreen view of the image in the looks screen
 import React from 'react';
 import { View, Image, StyleSheet, TouchableWithoutFeedback } from 'react-native';
 
@@ -9,7 +9,6 @@ const LookImageScreen = ({ route, navigation }) => {
     <TouchableWithoutFeedback onPress={() => navigation.goBack()}>
       <View style={styles.container}>
         <Image source={image} style={styles.fullscreenImage} />
-        
       </View>
     </TouchableWithoutFeedback>
   );

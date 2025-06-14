@@ -1,3 +1,5 @@
+//Overview of all blogs
+
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';
@@ -7,22 +9,23 @@ import {createStackNavigator} from '@react-navigation/stack';
 import BlogCard from '../components/blogCard';
 import * as Font from 'expo-font';
 import {format} from 'date-fns';
-import{DEMONIA_WEBFLOW_API_KEY} from '@env';
+import{DEMONIA_WEBFLOW_API_KEY} from '@env'; //making use of .env file to store API key to not hardcode or expose it in the codebase
 
 const BlogsScreen = ({navigation}) => {
     const [blogs, setBlogs] = useState([]);
 
+    // converting ISO date to a format more readable by actual humans. Fri 13 June 2025
     const formatDate = (isoString) => {
         return format(new Date(isoString), 'EEE dd MMMM yyyy');
     }
 
     useEffect(() => {
         fetch(
-            'https://api.webflow.com/v2/sites/67ab9628a0b2d39659eb5d0f/collections/67bcc196a990af2400ff7601/items',
+            'https://api.webflow.com/v2/sites/67ab9628a0b2d39659eb5d0f/collections/67bcc196a990af2400ff7601/items', //blogs collection
             {
                 headers:{
                     Authorization:
-                        `Bearer ${DEMONIA_WEBFLOW_API_KEY}`,
+                        `Bearer ${DEMONIA_WEBFLOW_API_KEY}`, 
                 },
             }
         )
