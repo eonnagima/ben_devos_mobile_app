@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { BackHandler, ScrollView, StyleSheet, Text, View, Image, Button, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-const ProductCard = ({ mainImage, name, price, onPress }) => {
+const ProductCard = ({mainImage, name, price, onPress }) => {
     const addToCart = () => {
         alert('Added to cart');
     };

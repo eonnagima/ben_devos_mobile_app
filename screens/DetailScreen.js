@@ -8,7 +8,7 @@ import ProductCard from '../components/productCard';
 import * as Font from 'expo-font';
 
 const DetailScreen = ({route}) => {
-    const { imageSource, productName, productPrice } = route.params;
+    const product = route.params;
     const [fontsLoaded, setFontsLoaded] = useState(false); //een usestate laat ons toe om de waarde van een variabele te veranderen zonder de pagina te herladen
     const [quantity, setQuantity] = useState(1);
 
@@ -42,17 +42,14 @@ const DetailScreen = ({route}) => {
 
 return (
     <ScrollView style={styles.background}>
-        <View style={styles.container}>
-            <Text style={styles.header1}>Product</Text>
-        </View>
-        <View style={styles.container}>
-            <Image
-                source={imageSource}
-                style={styles.image}
-            />
-            <Text style={styles.header1}>{productName}</Text>
-            <Text style={styles.productPrice}>€{productPrice*quantity}</Text>
-        </View>
+            <View style={styles.container}>
+                <Image
+                    source={product.mainImage}
+                    style={styles.image}
+                />
+                <Text style={styles.header1}>{product.name}</Text>
+                <Text style={styles.productPrice}>€{product.price * quantity}</Text>
+            </View>
         <View style={styles.quantity}>
             <TouchableOpacity onPress={decreaseQuantity}>
                 <Text style={styles.productPrice}>-</Text>
@@ -69,6 +66,22 @@ return (
                 onPress = {() => alert('Added to cart')}
             />
         </View>
+        <View style={styles.container}>
+            <Text style={{ fontFamily: 'Elza-Text-Medium', color: 'black', textAlign: 'center' }}>
+                {product.description}
+            </Text>
+        </View>
+    {product.otherImages && product.otherImages.length > 0 && (
+    <View style={styles.otherImagesContainer}>
+        {product.otherImages.map((img, index) => (
+        <Image
+            key={index}
+            source={img}
+            style={styles.image}
+        />
+        ))}
+    </View>
+    )}
     </ScrollView>
     );
 }
