@@ -10,14 +10,20 @@ import{ DEMONIA_WEBFLOW_API_KEY} from '@env';
 
 import LinkCard from '../components/linkCard';
 
+import logoImg from '../assets/images/logo.png';
 import shoesImg from '../assets/images/shoes.jpg';
 import blogsImg from '../assets/images/blogs.jpg';
+import looksImg from '../assets/images/looks.jpg';
 
 const HomeScreen = ({navigation}) => {
 
 return (
     <ScrollView style={styles.background}>
         <View style={styles.container}>
+            <Image
+                source={logoImg}
+                style={styles.logo}
+            />
 
             <Text style={styles.header1}>Demonia Cult</Text>
             <Text style={styles.slogan}>Defining Alternative Footwear</Text>
@@ -28,12 +34,15 @@ return (
                 title="Discover our collection"
                 onPress={() => navigation.navigate('Products')}
             />
-        </View>
-        <View style={styles.container}>
             <LinkCard
                 image={blogsImg}
                 title="Read our latest news"
                 onPress={() => navigation.navigate('Blogs')}
+            />
+            <LinkCard
+                image={looksImg}
+                title="Get inspired by fellow freaks"
+                onPress={() => navigation.navigate('Looks')}
             />
         </View>
     </ScrollView>
@@ -59,6 +68,12 @@ const styles = StyleSheet.create({
       marginTop: 20,
       fontFamily: 'Larken-ExtraBold',
       textTransform: 'uppercase'
+    },
+    logo:{
+        width: 200,
+        height: 100,
+        alignSelf: 'center',
+        resizeMode: 'contain',
     },
     slogan:{
         fontSize: 18,

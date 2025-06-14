@@ -13,6 +13,7 @@ import ProductDetailScreen from './screens/ProductDetailScreen';
 import BlogsScreen from './screens/BlogsScreen';
 import BlogPostScreen from './screens/BlogPostScreen';
 import CartScreen from './screens/CartScreen';
+import LooksScreen from './screens/LooksScreen';
 
 
 const Stack = createStackNavigator();
@@ -55,6 +56,8 @@ export default function App() {
         <Stack.Screen name="Blogs" component={BlogsScreen}/>
         <Stack.Screen name="BlogPost" component={BlogPostScreen}/>
 
+        <Stack.Screen name="Looks" component={LooksScreen}/>
+        
         {/* <Stack.Screen name="Cart" component={CartScreen}/> */}
         
       </Stack.Navigator>

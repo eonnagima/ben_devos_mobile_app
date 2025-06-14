@@ -5,7 +5,7 @@ const LinkCard = ({image, title, onPress}) => {
 return(
     <TouchableOpacity 
         onPress={onPress}
-        style={{ width: '100%' }}
+        style={{ width: '100%', marginBottom: 32 }}
     >
         <ImageBackground 
             source={image}
@@ -34,6 +34,7 @@ const styles = StyleSheet.create({
         borderRadius: 4,
         alignContent: 'center',
         justifyContent: 'center',
+        
     },
     colorOverlay: {
         flex: 1,
@@ -41,6 +42,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 4,
+        padding: 40
     },
 });
 
