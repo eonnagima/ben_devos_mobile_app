@@ -7,6 +7,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack'; 
 import * as Font from 'expo-font';
 import Toast from 'react-native-toast-message';
+import toastConfig from './components/toastConfig';
 
 import HomeScreen from './screens/HomeScreen';
 import ProductsScreen from './screens/ProductsScreen';
@@ -66,7 +67,7 @@ export default function App() {
           
         </Stack.Navigator>
       </NavigationContainer>
-      <Toast/>  
+      <Toast config={toastConfig}/>  
     </>
   );
 }

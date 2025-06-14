@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, Button, TouchableOpacity } from 'react-native';
-import { useCartStore } from '../useCart.js';
+import { useCartStore } from '../store/useCart.js';
 import Toast from 'react-native-toast-message';
 
 const ProductCard = ({ id, mainImage, name, price, onPress }) => {
@@ -19,7 +19,7 @@ const ProductCard = ({ id, mainImage, name, price, onPress }) => {
         type: 'success',
         text1: `${name} added to cart`,
         position: 'bottom',
-        visibilityTime: 1500,
+        visibilityTime: 3000, //3s
   });
   };
 
