@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, Image, Button, TouchableOpacity } from 'react-native';
 import { useCartStore } from '../store/useCart.js';
 import Toast from 'react-native-toast-message';
+import CustomButton from '../components/button.js'; 
 
 const ProductCard = ({ id, mainImage, name, price, onPress }) => {
   const addToCart = useCartStore(state => state.addToCart);
@@ -35,9 +36,8 @@ const ProductCard = ({ id, mainImage, name, price, onPress }) => {
           <Text style={styles.productPrice}>€{price}</Text>
         </View>
       </TouchableOpacity>
-      <Button
-        title="Add to cart"
-        color="#000"
+      <CustomButton
+        text="Add to Cart"
         onPress={handleAddToCart}
       />
     </View>

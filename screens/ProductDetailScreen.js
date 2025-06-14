@@ -8,7 +8,8 @@ import * as Font from 'expo-font';
 import Toast from 'react-native-toast-message';
 
 import {useCartStore} from '../store/useCart.js';
-import ProductCard from '../components/productCard';
+import CustomButton from '../components/button.js'; 
+
 
 const ProductDetailScreen = ({route}) => {
     const product = route.params;
@@ -60,14 +61,13 @@ return (
             </TouchableOpacity>
         </View>
         <View style={styles.container}>
-            <Button
-                title="Add to cart"
-                color="#000"
-                onPress = {handleAddToCart}
+            <CustomButton
+                text="Add to Cart"
+                onPress={handleAddToCart}
             />
         </View>
         <View style={styles.container}>
-            <Text style={{ fontFamily: 'Elza-Text-Medium', color: 'black', textAlign: 'center' }}>
+            <Text style={styles.productDescription}>
                 {product.description}
             </Text>
         </View>
@@ -126,6 +126,12 @@ const styles = StyleSheet.create({
         fontSize: 18,
         fontFamily: 'Elza-Text-Medium',
         color: "black"
+    },
+    productDescription: {
+        fontFamily: 'Elza-Text-Medium', 
+        color: 'black', 
+        textAlign: 'left',
+        lineHeight: 20,
     }
 });
 
