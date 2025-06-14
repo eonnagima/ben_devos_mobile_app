@@ -6,10 +6,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack'; 
 import ProductCard from '../components/productCard';
 import * as Font from 'expo-font';
-
-import Blaze158Img from '../images/shoes/blaze-158-bvl_960x960_crop_center.webp';
-import Shaker70Img from '../images/shoes/shaker-70-bvl_960x960_crop_center.webp';
-import Camel311Img from '../images/shoes/camel-311-bsue_d514108e-f2ef-4e4b-8daa-44ac2fd9b95e_960x960_crop_center.webp';
+import{ DEMONIA_WEBFLOW_API_KEY} from '@env';
 
 const HomeScreen = ({navigation}) => {
   const [fontsLoaded, setFontsLoaded] = useState(false);
@@ -36,7 +33,7 @@ const HomeScreen = ({navigation}) => {
         {
             headers:{
                 Authorization:
-                    'Bearer 2413f031b22cff97341a824f2b2b621db2bac9425f28183195bf294812f1520f',
+                    `Bearer ${DEMONIA_WEBFLOW_API_KEY}`,
             },
         }
     )
